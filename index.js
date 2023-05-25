@@ -1,6 +1,7 @@
-import express from "express";
-import cors from "cors";
-import axios from "axios";
+const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
+
 const app = express();
 app.use(cors());
 
@@ -29,3 +30,5 @@ app.get("/almaty", async (req, res) => {
 app.listen(8080, () => {
   console.log("8080 port");
 });
+
+module.exports = app;
