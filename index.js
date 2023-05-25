@@ -14,18 +14,30 @@ const month =
 const year = today.getFullYear().toString();
 const date = day + "-" + month + "-" + year;
 
+app.get("/", async (req, res) => {
+  res.json(res.json({ message: "Default page!" }));
+});
+
 app.get("/oskemen", async (req, res) => {
-  const data = await axios.get(
-    "https://namaz.muftyat.kz/kk/api/times/2023/49.95/82.616667"
-  );
-  res.send(data.data.result.find((namaz) => namaz.date === date));
+  try {
+    const data = await axios.get(
+      "https://namaz.muftyat.kz/kk/api/times/2023/49.95/82.616667"
+    );
+    res.send(data.data.result.find((namaz) => namaz.date === date));
+  } catch (err) {
+    res.json(err);
+  }
 });
 
 app.get("/almaty", async (req, res) => {
-  const data = await axios.get(
-    "https://namaz.muftyat.kz/kk/api/times/2023/43.238293/76.945465"
-  );
-  res.send(data.data.result.find((namaz) => namaz.date === date));
+  try {
+    const data = await axios.get(
+      "https://namaz.muftyat.kz/kk/api/times/2023/43.238293/76.945465"
+    );
+    res.send(data.data.result.find((namaz) => namaz.date === date));
+  } catch (err) {
+    res.json(err);
+  }
 });
 app.listen(8080, () => {
   console.log("8080 port");
