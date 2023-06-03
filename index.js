@@ -42,7 +42,6 @@ app.get("/almaty", async (req, res) => {
     const data = await axios.get(
       "https://namaz.muftyat.kz/kk/api/times/2023/43.238293/76.945465"
     );
-    console.log(data.data.result.find((namaz) => namaz.date === getDate()));
     res.send(data.data.result.find((namaz) => namaz.date === getDate()));
   } catch (err) {
     res.json(err);
