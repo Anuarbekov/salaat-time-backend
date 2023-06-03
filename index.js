@@ -7,7 +7,8 @@ app.use(cors());
 
 const getDate = () => {
   const today = new Date();
-  const day = today.getDate().toString();
+  const day =
+    today.getDate() > 9 ? today.getDate() : "0" + today.getDate().toString();
   const month =
     today.getMonth() + 1 > 9
       ? (today.getMonth() + 1).toString()
@@ -41,6 +42,7 @@ app.get("/almaty", async (req, res) => {
     const data = await axios.get(
       "https://namaz.muftyat.kz/kk/api/times/2023/43.238293/76.945465"
     );
+    console.log(data.data.result.find((namaz) => namaz.date === getDate()));
     res.send(data.data.result.find((namaz) => namaz.date === getDate()));
   } catch (err) {
     res.json(err);
