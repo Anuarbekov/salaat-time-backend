@@ -47,6 +47,16 @@ app.get("/almaty", async (req, res) => {
     res.json(err);
   }
 });
+app.get("/astana", async (req, res) => {
+  try {
+    const data = await axios.get(
+      "https://namaz.muftyat.kz/kk/api/times/2023/51.133333/71.433333"
+    );
+    res.send(data.data.result.find((namaz) => namaz.date === getDate()));
+  } catch (err) {
+    res.json(err);
+  }
+});
 
 app.listen(8080, () => {
   console.log("8080 port");
