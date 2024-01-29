@@ -2,10 +2,10 @@
 # Salaat Time Backend
 
 Backend for Salaat Time project on React.
-
+Backend - ExpressJS, Frontend - ReactJS.
 ## Installation
 
-Install salaat-time with git clone
+Install salaat-time-backend with git clone
 
 ```bash
   git clone https://github.com/Anuarbekov/salaat-time-backend.git
