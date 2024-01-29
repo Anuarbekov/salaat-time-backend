@@ -20,7 +20,7 @@ const getDate = () => {
 
 app.get("/", async (req, res) => {
   try {
-    res.json({ message: "Default page!" });
+    res.json({ message: "Default page of namaz-time-backend" });
   } catch (err) {
     res.json(err);
   }
@@ -29,7 +29,7 @@ app.get("/", async (req, res) => {
 app.get("/oskemen", async (req, res) => {
   try {
     const data = await axios.get(
-      "https://namaz.muftyat.kz/kk/api/times/2023/49.95/82.616667"
+      `https://namaz.muftyat.kz/kk/api/times/${new Date().getFullYear()}/49.95/82.616667`
     );
     res.send(data.data.result.find((namaz) => namaz.date === getDate()));
   } catch (err) {
@@ -40,7 +40,7 @@ app.get("/oskemen", async (req, res) => {
 app.get("/almaty", async (req, res) => {
   try {
     const data = await axios.get(
-      "https://namaz.muftyat.kz/kk/api/times/2023/43.238293/76.945465"
+      `https://namaz.muftyat.kz/kk/api/times/${new Date().getFullYear()}/43.238293/76.945465`
     );
     res.send(data.data.result.find((namaz) => namaz.date === getDate()));
   } catch (err) {
@@ -51,7 +51,7 @@ app.get("/almaty", async (req, res) => {
 app.get("/astana", async (req, res) => {
   try {
     const data = await axios.get(
-      "https://namaz.muftyat.kz/kk/api/times/2023/51.133333/71.433333"
+      `https://namaz.muftyat.kz/kk/api/times/${new Date().getFullYear()}/51.133333/71.433333`
     );
     res.send(data.data.result.find((namaz) => namaz.date === getDate()));
   } catch (err) {
@@ -62,7 +62,7 @@ app.get("/astana", async (req, res) => {
 app.get("/shymkent", async (req, res) => {
   try {
     const data = await axios.get(
-      "https://namaz.muftyat.kz/kk/api/times/2023/42.3/69.6"
+      `https://namaz.muftyat.kz/kk/api/times/${new Date().getFullYear()}/42.3/69.6`
     );
     res.send(data.data.result.find((namaz) => namaz.date === getDate()));
   } catch (err) {
